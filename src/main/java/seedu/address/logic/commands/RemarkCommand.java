@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -9,18 +11,14 @@ import seedu.address.model.person.Remark;
 
 import java.util.List;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-public class RemarkCommand extends Command{
+
+public class RemarkCommand extends Command {
 
     public static final String COMMAND_WORD = "remark";
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
 
     public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Person: %1$s";
     public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Person: %1$s";
-
-    private final Index index;
-    private final Remark remark;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the remark of the person identified "
@@ -31,6 +29,15 @@ public class RemarkCommand extends Command{
             + "Example: " + COMMAND_WORD + " 1 "
             + "r/ Likes to swim.";
 
+    private final Index index;
+    private final Remark remark;
+
+    /**
+     * Constructor for RemarkCommand.
+     *
+     * @param index Index.
+     * @param remark Remark.
+     */
 
     public RemarkCommand(Index index, Remark remark) {
         requireAllNonNull(index, remark);
