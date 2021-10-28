@@ -15,6 +15,7 @@ import seedu.address.logic.commands.task.EditTaskCommand;
 import seedu.address.logic.commands.task.FindTaskCommand;
 import seedu.address.logic.commands.task.ListTaskCommand;
 import seedu.address.logic.commands.task.PurgeTaskCommand;
+import seedu.address.logic.commands.task.RecurTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.task.AddTaskCommandParser;
 import seedu.address.logic.parser.task.DeleteTaskCommandParser;
@@ -22,6 +23,7 @@ import seedu.address.logic.parser.task.DoneTaskCommandParser;
 import seedu.address.logic.parser.task.EditTaskCommandParser;
 import seedu.address.logic.parser.task.FindTaskCommandParser;
 import seedu.address.logic.parser.task.ListTaskCommandParser;
+import seedu.address.logic.parser.task.RecurTaskCommandParser;
 
 /**
  * Parses all task-related commands (those starting with "task") and returns a TaskCommand.
@@ -64,6 +66,9 @@ public class TaskCommandParser implements Parser<TaskCommand> {
 
         case FindTaskCommand.COMMAND_WORD:
             return new FindTaskCommandParser().parse(arguments);
+
+        case RecurTaskCommand.COMMAND_WORD:
+            return new RecurTaskCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
